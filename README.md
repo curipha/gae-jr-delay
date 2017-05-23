@@ -27,7 +27,7 @@ gcloud --quiet app deploy
 
 #### Deploy new cron
 ```bash
-gcloud -q app deploy cron.yaml
+gcloud --quiet app deploy cron.yaml
 ```
 
 Icon

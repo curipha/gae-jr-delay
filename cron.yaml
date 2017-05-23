@@ -1,0 +1,5 @@
+cron:
+  - description: Check delays
+    url: /cron/crawl
+    schedule: every 5 minutes from 4:00 to 2:00
+    timezone: Asia/Tokyo

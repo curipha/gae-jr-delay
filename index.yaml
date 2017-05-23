@@ -1,0 +1,12 @@
+indexes:
+  - kind: Delay
+    ancestor: yes
+    properties:
+      - name: timestamp
+        direction: desc
+  - kind: Delay
+    ancestor: no
+    properties:
+      - name: isdelay
+      - name: timestamp
+        direction: desc

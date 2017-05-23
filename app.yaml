@@ -1,0 +1,29 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+skip_files:
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.png$
+
+libraries:
+  - name: lxml
+    version: latest
+  - name: jinja2
+    version: latest
+
+handlers:
+  - url: /cron/.*
+    script: crawler.app
+    login: admin
+    secure: always
+  - url: /
+    script: html.app
+    secure: always
+  - url: /feed
+    script: html.app
+    secure: always
+  - url: /(.*)
+    static_files: www/\1
+    upload: www/(.*)
+    secure: always

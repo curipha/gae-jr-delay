@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>JR西日本 京阪神地区運行情報 | JR West Train status</title>
+<link rel="alternate" href="/feed" type="application/atom+xml" />
+<style type="text/css">
+body {
+  width: 900px;
+  margin: 1.8rem auto;
+  line-height: 1.8;
+}
+h1 {
+  margin: 0;
+  padding: 0;
+  line-height:1;
+}
+#map {
+  box-shadow: 0 0 10px #ccc;
+}
+#status {
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>JR西日本 京阪神地区運行情報</h1>
+  <p id="lastmod">Last update: {{ timestamp }}</p>
+</header>
+<main>
+{% if image %}
+  <img id="map" src="{{ image }}" alt="京阪神マップ" />
+{% endif %}
+
+{% if details %}
+  {% for detail in details %}
+    <h2>{{ detail.title }}</h2>
+    <p>{{ detail.description }}</p>
+    {% if detail.areas %}
+      <ul>
+        {% for area in detail.areas %}
+          <li>{{ area.line }} : {{ area.station }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <p id="status">平常通り運行しています</p>
+{% endif %}
+</main>
+<hr />
+<aside>
+<p>
+この情報はJR西日本が提供している<a href="https://trafficinfo.westjr.co.jp/kinki.html">運行情報</a>を5分おきにミラーしています<br />
+アイコンは<a href="https://material.io/icons/#ic_train">Material icons</a>で配布されているものを利用しています
+</p>
+</aside>
+</body>
+</html>
+{% endautoescape %}

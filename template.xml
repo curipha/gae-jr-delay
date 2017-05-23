@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+{% autoescape true %}
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+<title>JR西日本 京阪神地区運行情報</title>
+<link href="{{ base }}" />
+<updated>{{ update.strftime('%Y-%m-%dT%H:%M:%SZ') }}</updated>
+<author>
+  <name>JR西日本 京阪神地区運行情報</name>
+</author>
+<id>{{ base }}</id>
+{% for entity in entities %}
+  {% for detail in entity.details %}
+    <entry>
+      <title>{{ detail.title }}</title>
+
+      <link href="{{ base }}?id={{ entity.key.id() }}" />
+      <id>{{ base }}?id={{ entity.key.id() }}</id>
+
+      <updated>{{ entity.timestamp.strftime('%Y-%m-%dT%H:%M:%SZ') }}</updated>
+      <summary>{{ detail.description }}</summary>
+      <content type="xhtml" xml:lang="ja" xml:base="{{ base }}">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>{{ detail.description }}</p>
+        {% if detail.areas %}
+          <ul>
+            {% for area in detail.areas %}
+              <li>{{ area.line }} : {{ area.station }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if entity.image %}
+          <img src="{{ entity.image }}" alt="京阪神マップ" />
+        {% endif %}
+        </div>
+      </content>
+      {% for area in detail.areas %}
+        <category term="{{ area.line }}" />
+      {% endfor %}
+    </entry>
+  {% endfor %}
+{% endfor %}
+</feed>
+{% endautoescape %}

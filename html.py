@@ -45,14 +45,14 @@ class MainPage(webapp2.RequestHandler):
 
 
     self.response.write(
-        JINJA_ENV.get_template('template.html').render(
-          {
-            'image':     entity.image,
-            'timestamp': ( entity.timestamp + timedelta(hours=9) ).strftime('%Y-%-m-%-d %-H:%M JST'),
-            'details':   entity.details
-          }
-        )
+      JINJA_ENV.get_template('template.html').render(
+        {
+          'image':     entity.image,
+          'timestamp': ( entity.timestamp + timedelta(hours=9) ).strftime('%Y-%-m-%-d %-H:%M JST'),
+          'details':   entity.details
+        }
       )
+    )
 
     return
 

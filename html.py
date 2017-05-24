@@ -29,7 +29,7 @@ class MainPage(webapp2.RequestHandler):
 
       entity = Delay().get_by_id(int(key))
 
-      if entity == None:
+      if entity is None:
         self.error(404)
         self.response.write('404 Not found')
         return
@@ -38,7 +38,7 @@ class MainPage(webapp2.RequestHandler):
 
       entity = Delay().get_latest()
 
-      if entity == None:
+      if entity is None:
         self.error(503)
         self.response.write('503 Service unavailable')
         return
@@ -60,7 +60,7 @@ class AtomFeed(webapp2.RequestHandler):
   def get(self):
     entities = Delay().get_delays()
 
-    if entities == None:
+    if entities is None:
       self.error(503)
       self.response.write('503 Service unavailable')
       return

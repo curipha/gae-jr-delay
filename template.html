@@ -16,6 +16,10 @@ h1 {
   padding: 0;
   line-height:1;
 }
+#archived {
+  color: #e00;
+  font: bold 1.2rem sans-serif;
+}
 #map {
   box-shadow: 0 0 20px #ccc;
 }
@@ -28,7 +32,13 @@ h1 {
 <body>
 <header>
   <h1>JR西日本 京阪神地区運行情報</h1>
-  <p id="lastmod">Last update: {{ timestamp }}</p>
+  <p>
+  {% if isarchive %}
+    <span id="archived">【最新の情報ではありません】{{ timestamp }} 時点</span>
+  {% else %}
+    <span id="lastmod">Last update: {{ timestamp }}</span>
+  {% endif %}
+  </p>
 </header>
 <main>
 {% if image %}

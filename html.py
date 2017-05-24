@@ -18,6 +18,7 @@ JINJA_ENV = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
   def get(self):
+    isarchive = True
     key = self.request.get('id')
 
     if len(key) > 0:
@@ -37,6 +38,7 @@ class MainPage(webapp2.RequestHandler):
     else:
 
       entity = Delay().get_latest()
+      isarchive = False
 
       if entity is None:
         self.error(503)
@@ -47,6 +49,7 @@ class MainPage(webapp2.RequestHandler):
     self.response.write(
       JINJA_ENV.get_template('template.html').render(
         {
+          'isarchive': isarchive,
           'image':     entity.image,
           'timestamp': ( entity.timestamp + timedelta(hours=9) ).strftime('%Y-%-m-%-d %-H:%M JST'),
           'details':   entity.details

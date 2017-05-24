@@ -49,7 +49,8 @@ class JrWest():
     dom = parser.xpath(XPATH_IMG)
 
     if len(dom) > 0:
-      base = fp.geturl()[0:base.rfind('/') + 1]
+      base = fp.geturl()
+      base = base[0:base.rfind('/') + 1]
       self.delay.image = ( dom[0].base or base ) + dom[0].attrib.get('src')
 
 

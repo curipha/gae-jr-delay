@@ -21,5 +21,5 @@ class Delay(ndb.Model):
   def get_latest(self):
     return self.query().order(-self.__class__.timestamp).get()
 
-  def get_delays(self, count = 5):
+  def get_delays(self, count = 10):
     return self.query().filter(self.__class__.isdelay == True).order(-self.__class__.timestamp).fetch(count)

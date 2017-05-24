@@ -34,9 +34,9 @@ h1 {
   <h1>JR西日本 京阪神地区運行情報</h1>
   <p>
   {% if isarchive %}
-    <span id="archived">【最新の情報ではありません】{{ timestamp }} 時点</span>
+    <span id="archived">【最新の情報ではありません】{{ timestamp }} 時点</span> （<a href="/">最新の情報を表示する</a>）
   {% else %}
-    <span id="lastmod">Last update: {{ timestamp }}</span>
+    <span id="lastmod">Last update: {{ timestamp }}</span> （<a href="/">最新の情報に更新する</a>）
   {% endif %}
   </p>
 </header>

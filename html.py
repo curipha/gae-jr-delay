@@ -64,7 +64,7 @@ class AtomFeed(webapp2.RequestHandler):
   def get(self):
     entities = Delay().get_delays()
 
-    if entities is None:
+    if entities is None or len(entities) < 1:
       self.error(503)
       self.response.write('503 Service unavailable')
       return

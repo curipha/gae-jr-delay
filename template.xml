@@ -28,11 +28,11 @@
             {% endfor %}
           </ul>
         {% endif %}
-        {% if entity.image %}
-          <img src="{{ entity.image }}" alt="京阪神マップ" />
-        {% endif %}
         </div>
       </content>
+      {% if entity.image %}
+        <link rel="enclosure" href="{{ entity.image }}" type="image/jpeg" />
+      {% endif %}
       {% for area in detail.areas %}
         <category term="{{ area.line }}" />
       {% endfor %}

@@ -21,10 +21,10 @@ class JrWest():
   def update(self):
     if self.parse() >= 0:
       self.delay.put()
-      logging.info('Commit to Google Cloud Storage')
+      logging.info('Commit to Google Cloud Datastore')
     else:
       logging.error('Failed to fetch and/or parse the HTML')
-      logging.info('No record is committed to Google Cloud Storage')
+      logging.info('No record is committed to Google Cloud Datastore')
 
   def parse(self):
     XPATH_BASE = '//div[@id="syosai_1"][1]'

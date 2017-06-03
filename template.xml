@@ -14,7 +14,7 @@
       <title>{{ detail.title }}</title>
 
       <link href="{{ base }}?id={{ entity.key.id() }}" />
-      <id>{{ base }}?id={{ entity.key.id() }}</id>
+      <id>{{ base }}?id={{ entity.key.id() }}#{{ loop.index }}</id>
 
       <updated>{{ entity.timestamp.strftime('%Y-%m-%dT%H:%M:%SZ') }}</updated>
       <summary>{{ detail.description }}</summary>

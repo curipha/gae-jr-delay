@@ -79,7 +79,7 @@ class JrWest():
       details.append(
         DelayDetail(
           title       = detail.findtext('div[@class="jisyo_hdr"]/h2[@class="jisyo_title"]/a[@id]'),
-          description = detail.findtext('div[@class="jisyo_contents"]/p[@class="gaiyo"]'),
+          description = detail.xpath('string(div[@class="jisyo_contents"]/p[@class="gaiyo"])'),
           areas       = areas
         )
       )
